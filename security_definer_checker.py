@@ -47,12 +47,12 @@ for row in rows: #rows return 2 dimension array
             except psycopg2.Error as err:
                 print("func content error",err)
 
-
+#Check for if there is security definer in function content
 for func in func_content:
     for single_func in func:
         try:
-            if check_function(single_func):
-                print("Critical issue: There should be no SQL function with SECURITY DEFINER. ")                
+            if check_function(single_func): # if there is a security definer returns true
+                print("Critical issue: There should be no SQL function with SECURITY DEFINER. ")
             else:
                 print("There is no issue")
         except psycopg2.Error as err:
