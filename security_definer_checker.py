@@ -23,6 +23,7 @@ def check_function(function_declaration):
         return True
     return False
 
+print("Security Definer checking...")
 
 try:
     get_database_functions() #return declared functions in db
@@ -50,6 +51,9 @@ for row in rows: #rows return 2 dimension array
 for func in func_content:
     for single_func in func:
         try:
-            print(check_function(single_func))
+            if check_function(single_func):
+                print("Critical issue: There should be no SQL function with SECURITY DEFINER. ")                
+            else:
+                print("There is no issue")
         except psycopg2.Error as err:
             print("function checking error")
