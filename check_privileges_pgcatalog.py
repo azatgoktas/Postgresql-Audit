@@ -2,6 +2,7 @@ import psycopg2
 from connect import cur
 
 #- Check that nobody except for superusers has any privileges on pg_catalog.pg_authid.
+print("Checking privileges on pg_catalog.pg_authid.")
 
 def get_privileges_on_pg_catalog(): #get users who have privileges on pg_catalog.pg_authid
     cur.execute("""SELECT grantee
