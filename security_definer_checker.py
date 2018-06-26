@@ -1,6 +1,7 @@
 import psycopg2
 from connect import cur
 
+#- Check that there is no SQL function with SECURITY DEFINER.
 
 def get_database_functions():
     cur.execute("""SELECT  p.proname
