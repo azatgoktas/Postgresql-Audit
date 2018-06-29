@@ -4,3 +4,5 @@ import check_ssl_force
 import check_public_priveleges
 import check_privileges
 import check_privileges_pgcatalog
+import show_grantees
+import check_version
