@@ -13,10 +13,14 @@ def get_privileges_on_pg_catalog(): #get users who have privileges on pg_catalog
                     """)
 
 def get_superusers():
-    cur.execute("""SELECT usename
-                    from pg_user
-                    where usesuper = true
-                """)
+    # cur.execute("""SELECT usename
+    #                 from pg_user
+    #                 where usesuper = true
+    #             """)
+    cur.execute("""SELECT *
+                    FROM pg_catalog.pg_authid
+                    where rolsuper = true
+                    """)
 
 try:
     get_privileges_on_pg_catalog()
@@ -41,3 +45,5 @@ for users in users_on_pg_catalog:
         if user not in superList: # if that user not super user print an error.
              print("Critical Error: " + user + " has privileges on pg_catalog.pg_authid. "
              + user + " must be a superuser")
+        else:
+             print("OK")
