@@ -1,6 +1,6 @@
 import psycopg2
 from connect import cur
-
+from color_print import print_red, print_green
 #- Check that there is no SQL function with SECURITY DEFINER.
 
 def get_database_functions():
@@ -53,8 +53,8 @@ for func in func_content:
     for single_func in func:
         try:
             if check_function(single_func): # if there is a security definer returns true
-                print("Critical issue: There should be no SQL function with SECURITY DEFINER. ")
+                print_red("Critical issue: There should be no SQL function with SECURITY DEFINER. ")
             else:
-                print("There is no issue")
+                print_green("OK")
         except psycopg2.Error as err:
             print("function checking error")

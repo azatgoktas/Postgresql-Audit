@@ -1,6 +1,7 @@
 import psycopg2
 from connect import cur
 from get_last_version import version_number #fetching version from website
+from color_print import print_red, print_green
 
 #- Check that you are running the latest release for your version of PostgreSQL.
 print("Checking postgres version.")
@@ -20,5 +21,6 @@ for versionA in version_number:
         versionStr += str(versionText)
 
 if versionStr != version_number:
-    print("Warning: Please update your postgresql. "+ version_number + " is avaliable.")
-)
+    print_red("Warning: Please update your postgresql. "+ version_number + " is avaliable.")
+else:
+    print_green("OK")

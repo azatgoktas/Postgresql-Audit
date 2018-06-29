@@ -23,4 +23,6 @@ for user_and_privigile in users_and_privigiles:
     user = user_and_privigile[0].lower()
     if ("superuser" in privigile) or ("createdb" in privigile) or ("createrole" in privigile):
         if user != dba:
-            print("Critical issue :" + user + " has " + privigile + " privigile which is not recommended")
+            print_red("Critical issue :" + user + " has " + privigile + " privigile which is not recommended")
+        else:
+            print_green("OK")

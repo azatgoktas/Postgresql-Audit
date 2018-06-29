@@ -1,6 +1,6 @@
 import psycopg2
 from connect import cur
-
+from color_print import print_red, print_green
 #- Check that nobody except for superusers has any privileges on pg_catalog.pg_authid.
 print("Checking privileges on pg_catalog.pg_authid.")
 
@@ -43,7 +43,7 @@ for super in superusers: #creating super user list.
 for users in users_on_pg_catalog:
     for user in users:
         if user not in superList: # if that user not super user print an error.
-             print("Critical Error: " + user + " has privileges on pg_catalog.pg_authid. "
+             print_red("Critical Error: " + user + " has privileges on pg_catalog.pg_authid. "
              + user + " must be a superuser")
         else:
-             print("OK")
+             print_green("OK")
